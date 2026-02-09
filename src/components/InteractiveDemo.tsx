@@ -113,7 +113,10 @@ export function InteractiveDemo() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-24 sm:px-6">
+    <section
+      id="demo"
+      className="scroll-mt-28 relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-24 sm:px-6"
+    >
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl">
@@ -143,48 +146,50 @@ export function InteractiveDemo() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex justify-center lg:sticky lg:top-24 lg:h-[760px]"
+            className="flex justify-center lg:sticky lg:top-24 lg:h-[740px]"
           >
-            <div className="relative w-[360px] origin-top scale-[0.82] sm:scale-[0.9] lg:scale-[0.94] xl:scale-100">
-              <LivePhoneMockup ref={phoneRef} />
+            <div className="relative h-[588px] w-[288px] sm:h-[661px] sm:w-[324px] md:h-[735px] md:w-[360px]">
+              <div className="relative origin-top-left scale-[0.8] sm:scale-[0.9] md:scale-100">
+                <LivePhoneMockup ref={phoneRef} />
 
-              <div className="pointer-events-none absolute inset-[8px] z-30 overflow-hidden rounded-[2.55rem]">
-                <AnimatePresence mode="wait">
-                  {mockupNotice && (
-                    <motion.div
-                      key={mockupNotice.text}
-                      initial={{ opacity: 0, y: -12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -12 }}
-                      className={`absolute left-4 right-4 top-4 rounded-xl px-3 py-2 backdrop-blur-sm ${
-                        mockupNotice.tone === "success"
-                          ? "bg-[var(--success)]/20"
-                          : mockupNotice.tone === "info"
-                            ? "bg-[var(--primary)]/18"
-                            : "bg-[var(--bg-main)]/82"
-                      }`}
-                    >
-                      <p className="text-[11px] font-semibold text-[var(--text-primary)]">
-                        {mockupNotice.text}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className="pointer-events-none absolute inset-[8px] z-30 overflow-hidden rounded-[2.55rem]">
+                  <AnimatePresence mode="wait">
+                    {mockupNotice && (
+                      <motion.div
+                        key={mockupNotice.text}
+                        initial={{ opacity: 0, y: -12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        className={`absolute left-4 right-4 top-4 rounded-xl px-3 py-2 backdrop-blur-sm ${
+                          mockupNotice.tone === "success"
+                            ? "bg-[var(--success)]/20"
+                            : mockupNotice.tone === "info"
+                              ? "bg-[var(--primary)]/18"
+                              : "bg-[var(--bg-main)]/82"
+                        }`}
+                      >
+                        <p className="text-[11px] font-semibold text-[var(--text-primary)]">
+                          {mockupNotice.text}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
-                <AnimatePresence>
-                  {isProcessing && (
-                    <motion.div
-                      key="loading"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[var(--bg-main)]/42 backdrop-blur-[1px]"
-                    >
-                      <div className="h-10 w-10 rounded-full border-2 border-[var(--primary)] border-t-transparent animate-spin" />
-                      <p className="text-xs font-semibold text-[var(--primary)]">Parsing SMS...</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                  <AnimatePresence>
+                    {isProcessing && (
+                      <motion.div
+                        key="loading"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[var(--bg-main)]/42 backdrop-blur-[1px]"
+                      >
+                        <div className="h-10 w-10 rounded-full border-2 border-[var(--primary)] border-t-transparent animate-spin" />
+                        <p className="text-xs font-semibold text-[var(--primary)]">Parsing SMS...</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
           </motion.div>

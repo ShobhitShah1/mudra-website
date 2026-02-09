@@ -51,7 +51,7 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-32 px-4 relative overflow-hidden">
+    <section className="relative overflow-hidden px-4 py-20 md:py-32">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/20 to-transparent pointer-events-none" />
 
@@ -65,10 +65,10 @@ export function Features() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[var(--text-primary)] tracking-tight">
             Everything you need. <br />
             <span className="text-[var(--text-secondary)] opacity-60">
-              Nothing you don't.
+              Nothing you don&apos;t.
             </span>
           </h2>
-          <p className="text-[var(--text-secondary)] text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] md:text-xl">
             Packed with powerful automated features to help you master your
             finances while staying completely private.
           </p>
@@ -83,15 +83,15 @@ export function Features() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -8 }}
-              className="p-10 rounded-[2.5rem] bg-[var(--bg-surface)]/60 backdrop-blur-lg border border-[var(--border)]/60 transition-all duration-300 group hover:border-[var(--primary)]/30 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)] hover:bg-[var(--bg-surface)]"
+              className="group rounded-[2.2rem] border border-[var(--border)]/60 bg-[var(--bg-surface)]/60 p-7 backdrop-blur-lg transition-all duration-300 hover:border-[var(--primary)]/30 hover:bg-[var(--bg-surface)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)] sm:p-10"
             >
-              <div className="mb-8 w-16 h-16 rounded-2xl flex items-center justify-center bg-[var(--bg-main)] border border-[var(--border)] group-hover:scale-110 group-hover:border-[var(--primary)]/30 transition-all duration-500 shadow-sm">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--bg-main)] shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/30 sm:mb-8 sm:h-16 sm:w-16">
                 {feature.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">
+              <h3 className="mb-3 text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--primary)] sm:mb-4 sm:text-2xl">
                 {feature.title}
               </h3>
-              <p className="text-[var(--text-secondary)] leading-relaxed text-base group-hover:text-[var(--text-primary)] transition-colors">
+              <p className="text-sm leading-relaxed text-[var(--text-secondary)] transition-colors group-hover:text-[var(--text-primary)] sm:text-base">
                 {feature.description}
               </p>
             </motion.div>

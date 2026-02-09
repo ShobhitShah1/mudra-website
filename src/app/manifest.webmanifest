@@ -1,0 +1,16 @@
+{
+  "name": "Mudra",
+  "short_name": "Mudra",
+  "description": "A premium, privacy-focused expense tracking app that parses transaction SMS on-device with zero cloud dependency.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C1917",
+  "theme_color": "#BBB6B3",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

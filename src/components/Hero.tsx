@@ -7,14 +7,14 @@ import { APP_DOWNLOAD_URL } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[110vh] flex flex-col items-center justify-start pt-20 md:pt-24 px-4 overflow-hidden">
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-start overflow-hidden px-4 pb-8 pt-24 md:min-h-[108vh] md:pt-24">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-[var(--primary)] opacity-[0.08] blur-[120px] rounded-full mix-blend-screen animate-pulse-slow" />
         <div className="absolute bottom-[10%] right-[10%] w-[400px] h-[400px] bg-[var(--accent)] opacity-[0.08] blur-[100px] rounded-full mix-blend-screen" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-24">
         {/* Left Column: Text */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -30,26 +30,26 @@ export function Hero() {
             v1.0 Available Now
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[var(--text-primary)] mb-6 leading-[1.1]">
+          <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-7xl lg:text-8xl">
             Finance <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary)] to-[var(--text-secondary)]">
               Automated.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg md:text-xl lg:mx-0">
             The privacy-first expense tracker that parses your SMS notifications
             to automate your financial life. Zero manual entry. 100% Secure.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
+          <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center lg:justify-start">
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={APP_DOWNLOAD_URL}
               target="_blank"
               rel="noreferrer"
-              className="group h-14 px-8 rounded-full bg-[var(--text-primary)] text-[var(--bg-main)] flex items-center gap-3 transition-all duration-300 hover:bg-[var(--primary)] hover:text-[var(--bg-main)]"
+              className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[var(--text-primary)] px-8 text-[var(--bg-main)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-[var(--bg-main)] sm:w-auto"
             >
               <Download className="w-6 h-6 transition-transform duration-300" />
               <div className="flex flex-col items-start leading-none ml-1 mt-1.5">
@@ -68,14 +68,14 @@ export function Hero() {
                   .getElementById("how-it-works")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="group h-14 px-8 rounded-full border border-[var(--border)] bg-[var(--bg-surface)]/40 backdrop-blur-md text-[var(--text-primary)] flex items-center gap-3 transition-all duration-300 hover:bg-[var(--bg-surface)] hover:border-[var(--primary)]/50 hover:shadow-lg hover:shadow-[var(--primary)]/10"
+              className="group flex h-14 w-full items-center justify-center gap-3 rounded-full border border-[var(--border)] bg-[var(--bg-surface)]/40 px-8 text-[var(--text-primary)] backdrop-blur-md transition-all duration-300 hover:border-[var(--primary)]/50 hover:bg-[var(--bg-surface)] hover:shadow-lg hover:shadow-[var(--primary)]/10 sm:w-auto"
             >
-              <span className="text-lg font-medium">See How It Works</span>
+              <span className="text-base font-medium sm:text-lg">See How It Works</span>
               <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform fill-[var(--text-primary)]/10" />
             </motion.button>
           </div>
 
-          <div className="flex items-center justify-center lg:justify-start gap-8 text-[var(--text-muted)] text-sm font-medium">
+          <div className="flex flex-col items-center justify-center gap-3 text-sm font-medium text-[var(--text-muted)] sm:flex-row sm:gap-8 lg:justify-start">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-[var(--primary)]" />
               <span>No Data Collection</span>
@@ -96,7 +96,11 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
             className="relative z-20"
           >
-            <LivePhoneMockup />
+            <div className="relative h-[588px] w-[288px] sm:h-[661px] sm:w-[324px] md:h-[735px] md:w-[360px]">
+              <div className="origin-top-left scale-[0.8] sm:scale-[0.9] md:scale-100">
+                <LivePhoneMockup />
+              </div>
+            </div>
 
             {/* Floating Elements around phone */}
             <motion.div

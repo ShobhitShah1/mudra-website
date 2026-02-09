@@ -12,7 +12,7 @@ export function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end pointer-events-none">
+    <div className="pointer-events-none fixed bottom-24 right-4 z-50 flex flex-col items-end md:bottom-8 md:right-8">
       <div className="relative pointer-events-auto">
         {/* Expanded Grid Panel */}
         <AnimatePresence>
@@ -21,7 +21,7 @@ export function ThemeSwitcher() {
               initial={{ opacity: 0, scale: 0.9, y: 10, x: 10 }}
               animate={{ opacity: 1, scale: 1, y: -16, x: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 10, x: 10 }}
-              className="absolute bottom-full right-0 mb-4 p-5 rounded-3xl bg-[var(--bg-surface)]/95 backdrop-blur-xl border border-[var(--border)] shadow-2xl w-[340px] md:w-[460px] origin-bottom-right"
+              className="absolute bottom-full right-0 mb-4 w-[min(92vw,340px)] origin-bottom-right rounded-3xl border border-[var(--border)] bg-[var(--bg-surface)]/95 p-5 shadow-2xl backdrop-blur-xl md:w-[460px]"
             >
               <div className="flex justify-between items-center mb-4 px-1">
                 <span className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">
@@ -33,11 +33,13 @@ export function ThemeSwitcher() {
               </div>
 
               <div className="grid grid-cols-4 md:grid-cols-5 gap-4 max-h-[60vh] overflow-y-auto pr-2 scrollbar-hide py-4">
-                {Object.entries(THEMES).map(([key, theme], i) => (
+                {Object.entries(THEMES).map(([key, theme]) => (
                   <motion.button
                     key={key}
                     layoutId={`theme-${key}`}
                     onClick={() => setTheme(key)}
+                    aria-label={`Switch to ${theme.name || key} theme`}
+                    title={theme.name || key}
                     className={cn(
                       "relative group flex flex-col items-center gap-2",
                       themeName === key
@@ -94,6 +96,7 @@ export function ThemeSwitcher() {
         {/* Floating Trigger Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close theme switcher" : "Open theme switcher"}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="w-14 h-14 rounded-full bg-[var(--bg-main)] border border-[var(--border)] shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center relative z-50 group hover:border-[var(--primary)] transition-colors"

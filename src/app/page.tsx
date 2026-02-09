@@ -46,9 +46,7 @@ export default function Home() {
         <Features />
       </div>
       {/* <ThemeShowcase /> */}
-      <div id="demo" className="scroll-mt-28">
-        <InteractiveDemo />
-      </div>
+      <InteractiveDemo />
       <SmsSyncSimulator />
       <AnalyticsPlayground />
       <div id="app-features" className="scroll-mt-28">

@@ -53,7 +53,7 @@ export function QrQuickAccess() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 18, scale: 0.94 }}
             transition={{ duration: 0.24, ease: "easeOut" }}
-            className="pointer-events-auto mb-3 w-[245px] rounded-2xl border border-[var(--border)] bg-[var(--bg-main)]/90 p-3 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.75)] backdrop-blur-xl"
+            className="pointer-events-auto mb-3 w-[min(86vw,245px)] rounded-2xl border border-[var(--border)] bg-[var(--bg-main)]/90 p-3 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.75)] backdrop-blur-xl"
           >
             <div className="mb-2 flex items-center justify-between gap-2">
               <div className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--bg-surface)] px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.13em] text-[var(--text-secondary)]">
@@ -71,14 +71,14 @@ export function QrQuickAccess() {
 
             <div className="rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] p-2.5">
               <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-white p-2">
-              <Image
-                src={qrSrc}
-                alt="QR code to open Mudra download page"
-                fill
-                sizes="220px"
-                className="object-contain"
-                unoptimized
-              />
+                <Image
+                  src={qrSrc}
+                  alt="QR code to open Mudra download page"
+                  fill
+                  sizes="220px"
+                  className="object-contain"
+                  unoptimized
+                />
               </div>
             </div>
 
@@ -113,6 +113,7 @@ export function QrQuickAccess() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.22, ease: "easeOut" }}
         onClick={() => setIsOpen((prev) => !prev)}
+        aria-label={isOpen ? "Close QR quick access" : "Open QR quick access"}
         className="pointer-events-auto inline-flex h-10 items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/88 px-3 text-xs font-semibold text-[var(--text-primary)] shadow-[0_14px_35px_-24px_rgba(0,0,0,0.65)] backdrop-blur-md transition-colors hover:border-[var(--primary)]/50"
       >
         <QrCode className="h-4 w-4 text-[var(--primary)]" />
