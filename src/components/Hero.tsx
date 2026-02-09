@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { ArrowRight, Download, CheckCircle2, PlayCircle } from "lucide-react";
+import { Download, CheckCircle2, PlayCircle } from "lucide-react";
 import { LivePhoneMockup } from "@/components/LivePhoneMockup";
+import { APP_DOWNLOAD_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -43,9 +43,12 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12">
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              href={APP_DOWNLOAD_URL}
+              target="_blank"
+              rel="noreferrer"
               className="group h-14 px-8 rounded-full bg-[var(--text-primary)] text-[var(--bg-main)] flex items-center gap-3 transition-all duration-300 hover:bg-[var(--primary)] hover:text-[var(--bg-main)]"
             >
               <Download className="w-6 h-6 transition-transform duration-300" />
@@ -55,7 +58,7 @@ export function Hero() {
                 </span>
                 <span className="text-lg font-bold">Google Play</span>
               </div>
-            </motion.button>
+            </motion.a>
 
             <motion.button
               whileHover={{ scale: 1.05 }}

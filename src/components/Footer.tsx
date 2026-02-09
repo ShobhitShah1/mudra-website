@@ -1,24 +1,27 @@
+import Link from "next/link";
+
 export function Footer() {
   return (
-    <footer className="py-12 border-t border-[var(--border)] bg-[var(--bg-surface)]/20">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="border-t border-[var(--border)] bg-[var(--bg-surface)]/20 py-12">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 md:flex-row">
         <div className="text-center md:text-left">
-          <h3 className="text-2xl font-bold text-[var(--text-primary)]">
-            Mudra
-          </h3>
-          <p className="text-[var(--text-muted)] text-sm mt-2">
-            © 2026 Mudra Inc. All rights reserved.
+          <h3 className="text-2xl font-bold text-[var(--text-primary)]">Mudra</h3>
+          <p className="mt-2 text-sm text-[var(--text-muted)]">
+            (c) 2026 Mudra Inc. All rights reserved.
           </p>
         </div>
 
-        <div className="flex gap-8 text-[var(--text-secondary)] text-sm">
-          <a href="#" className="hover:text-[var(--primary)] transition-colors">
+        <div className="flex gap-8 text-sm text-[var(--text-secondary)]">
+          <Link href="/privacy" className="transition-colors hover:text-[var(--primary)]">
             Privacy Policy
-          </a>
-          <a href="#" className="hover:text-[var(--primary)] transition-colors">
+          </Link>
+          <Link href="/terms" className="transition-colors hover:text-[var(--primary)]">
             Terms of Service
-          </a>
-          <a href="#" className="hover:text-[var(--primary)] transition-colors">
+          </Link>
+          <a
+            href="mailto:privacy@mudra.app"
+            className="transition-colors hover:text-[var(--primary)]"
+          >
             Contact
           </a>
         </div>

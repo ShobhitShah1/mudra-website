@@ -31,6 +31,10 @@
     --background: var(--bg-main);
     --foreground: var(--text-primary);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {

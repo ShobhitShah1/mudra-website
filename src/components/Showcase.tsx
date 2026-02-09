@@ -28,11 +28,11 @@ export function Showcase() {
   return (
     <section
       id="how-it-works"
-      className="py-24 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm -mt-20 z-20"
+      className="scroll-mt-28 py-24 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <motion.div
-          className="max-w-3xl mx-auto mb-16"
+          className="w-full mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -40,11 +40,14 @@ export function Showcase() {
           <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-4 block">
             How it Works
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight text-[var(--text-primary)] mb-6">
-            Magic in your <br />
-            <span className="text-[var(--text-secondary)]">message inbox.</span>
+          <h2 className="mx-auto max-w-5xl text-4xl md:text-6xl font-bold leading-tight text-[var(--text-primary)] mb-6 tracking-tight">
+            Magic in your message inbox.
+            <br />
+            <span className="text-[var(--text-secondary)] opacity-60">
+              No manual entry needed.
+            </span>
           </h2>
-          <p className="text-lg text-[var(--text-muted)] leading-relaxed">
+          <p className="mx-auto max-w-4xl text-lg text-[var(--text-muted)] leading-relaxed">
             No manual entry. No bank login required. Mudra listens to your SMS
             notifications and does the heavy lifting instantly.
           </p>

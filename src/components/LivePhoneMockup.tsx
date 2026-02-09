@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
+import { motion } from "framer-motion";
 import {
   Bell,
   Home,
@@ -15,7 +19,15 @@ import {
 } from "lucide-react";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
-export function LivePhoneMockup() {
+export type LivePhoneMockupHandle = {
+  applyTransaction: (transaction: {
+    amount: number;
+    type: "expense" | "income";
+  }) => void;
+};
+
+export const LivePhoneMockup = forwardRef<LivePhoneMockupHandle>(
+  function LivePhoneMockup(_props, ref) {
   const [balance, setBalance] = useState(504151.06);
   const [expense, setExpense] = useState(1590);
   const [transactions, setTransactions] = useState(6);
@@ -33,6 +45,21 @@ export function LivePhoneMockup() {
     setExpense((prev) => prev + amount);
     setTransactions((prev) => prev + 1);
   };
+
+  useImperativeHandle(ref, () => ({
+    applyTransaction: ({ amount, type }) => {
+      const safeAmount = Math.max(0, amount);
+      if (safeAmount === 0) return;
+
+      if (type === "income") {
+        setBalance((prev) => prev + safeAmount);
+      } else {
+        setBalance((prev) => prev - safeAmount);
+        setExpense((prev) => prev + safeAmount);
+      }
+      setTransactions((prev) => prev + 1);
+    },
+  }));
 
   // Real Date Logic
   // We use useState for hydration stability (avoid server/client mismatch on date)
@@ -90,7 +117,7 @@ export function LivePhoneMockup() {
           </div>
         </div>
         <p className="text-[var(--text-muted)] text-[10px] mt-1 uppercase tracking-widest">
-          You're doing fine
+          You&apos;re doing fine
         </p>
       </div>
 
@@ -229,4 +256,4 @@ export function LivePhoneMockup() {
       <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[var(--primary)]/5 to-transparent pointer-events-none" />
     </div>
   );
-}
+});
