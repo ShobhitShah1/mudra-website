@@ -137,7 +137,8 @@ export function InteractiveDemo() {
             </span>
           </h2>
           <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            Parse a sample SMS and watch the device update with top notifications in real time.
+            Parse a sample SMS and watch the device update with top
+            notifications in real time.
           </p>
         </motion.div>
 
@@ -149,7 +150,7 @@ export function InteractiveDemo() {
             className="flex justify-center lg:sticky lg:top-24 lg:h-[740px]"
           >
             <div className="relative h-[588px] w-[288px] sm:h-[661px] sm:w-[324px] md:h-[735px] md:w-[360px]">
-              <div className="relative origin-top-left scale-[0.8] sm:scale-[0.9] md:scale-100">
+              <div className="relative z-30 origin-top-left scale-[0.8] sm:scale-[0.9] md:scale-100">
                 <LivePhoneMockup ref={phoneRef} />
 
                 <div className="pointer-events-none absolute inset-[8px] z-30 overflow-hidden rounded-[2.55rem]">
@@ -185,7 +186,9 @@ export function InteractiveDemo() {
                         className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[var(--bg-main)]/42 backdrop-blur-[1px]"
                       >
                         <div className="h-10 w-10 rounded-full border-2 border-[var(--primary)] border-t-transparent animate-spin" />
-                        <p className="text-xs font-semibold text-[var(--primary)]">Parsing SMS...</p>
+                        <p className="text-xs font-semibold text-[var(--primary)]">
+                          Parsing SMS...
+                        </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -201,7 +204,9 @@ export function InteractiveDemo() {
               viewport={{ once: true }}
               className="rounded-[2rem] border border-[var(--border)] bg-[var(--bg-main)]/65 p-6 shadow-[0_20px_50px_-28px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-8"
             >
-              <p className="mb-4 text-sm font-semibold text-[var(--text-primary)]">Try a transaction SMS</p>
+              <p className="mb-4 text-sm font-semibold text-[var(--text-primary)]">
+                Try a transaction SMS
+              </p>
 
               <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-surface)] p-4">
                 <label className="mb-2 block text-xs font-medium uppercase tracking-[0.12em] text-[var(--text-muted)]">
@@ -221,7 +226,9 @@ export function InteractiveDemo() {
                       disabled={!input.trim() || isProcessing}
                       className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--primary)] px-4 text-sm font-semibold text-[var(--bg-main)] transition-all hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                      <Send className={`h-4 w-4 ${isProcessing ? "animate-pulse" : ""}`} />
+                      <Send
+                        className={`h-4 w-4 ${isProcessing ? "animate-pulse" : ""}`}
+                      />
                       Parse SMS
                     </button>
                     <button

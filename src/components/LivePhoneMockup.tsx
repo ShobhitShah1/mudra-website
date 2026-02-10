@@ -3,6 +3,8 @@
 import React, {
   forwardRef,
   useImperativeHandle,
+  useMemo,
+  useSyncExternalStore,
   useState,
 } from "react";
 import { motion } from "framer-motion";
@@ -61,27 +63,52 @@ export const LivePhoneMockup = forwardRef<LivePhoneMockupHandle>(
     },
   }));
 
-  // Real Date Logic
-  // We use useState for hydration stability (avoid server/client mismatch on date)
-  const [dateInfo] = useState(() => {
-    const today = new Date();
+  const daySnapshot = useSyncExternalStore(
+    () => () => {},
+    () => {
+      const now = new Date();
+      return `${now.getFullYear()}-${now.getMonth()}-${now.getDate()}`;
+    },
+    () => "2026-0-1",
+  );
+
+  const dateInfo = useMemo(() => {
+    const [yearRaw, monthRaw, dayRaw] = daySnapshot.split("-").map(Number);
+    const hasValidParts = [yearRaw, monthRaw, dayRaw].every((value) =>
+      Number.isFinite(value),
+    );
+    const resolved = hasValidParts
+      ? new Date(yearRaw, monthRaw, dayRaw)
+      : new Date(2026, 0, 1);
+
+    const daysInMonth = new Date(
+      resolved.getFullYear(),
+      resolved.getMonth() + 1,
+      0,
+    ).getDate();
+
     return {
-      day: today.getDate(),
-      month: today.toLocaleString("default", { month: "long" }),
-      year: today.getFullYear(),
-      dateString: today.toLocaleDateString("en-US", {
+      day: resolved.getDate(),
+      month: resolved.toLocaleString("default", { month: "long" }),
+      year: resolved.getFullYear(),
+      dateString: resolved.toLocaleDateString("en-US", {
         weekday: "long",
         day: "numeric",
         month: "short",
       }),
+      daysInMonth,
     };
-  });
+  }, [daySnapshot]);
 
-  // Random data for the month
-  const [calendarData] = useState(() =>
-    Array.from({ length: 31 }, () =>
-      Math.random() > 0.6 ? (Math.random() * 5 + 0.5).toFixed(1) + "k" : null,
-    ),
+  const calendarData = useMemo(
+    () =>
+      Array.from({ length: dateInfo.daysInMonth }, (_, index) => {
+        const signal = (index * 17 + 13) % 10;
+        if (signal < 4) return null;
+        const amount = ((signal + (index % 3) + 3) * 0.4).toFixed(1);
+        return `${amount}k`;
+      }),
+    [dateInfo.daysInMonth],
   );
 
   return (
@@ -143,7 +170,7 @@ export const LivePhoneMockup = forwardRef<LivePhoneMockupHandle>(
           ))}
 
           {/* Days Mockup */}
-          {Array.from({ length: 30 }).map((_, i) => {
+          {Array.from({ length: dateInfo.daysInMonth }).map((_, i) => {
             const day = i + 1;
             const isSelected = day === dateInfo.day;
             const data = calendarData[i];

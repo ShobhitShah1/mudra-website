@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, CheckCircle2, PlayCircle } from "lucide-react";
+import { Download, CheckCircle2, PlayCircle, Bell } from "lucide-react";
 import { LivePhoneMockup } from "@/components/LivePhoneMockup";
 import { APP_DOWNLOAD_URL } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] flex-col items-center justify-start overflow-hidden px-4 pb-8 pt-24 md:min-h-[108vh] md:pt-24">
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-start overflow-x-visible px-4 pb-8 pt-24 md:min-h-[108vh] md:pt-24">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-[var(--primary)] opacity-[0.08] blur-[120px] rounded-full mix-blend-screen animate-pulse-slow" />
@@ -70,7 +70,9 @@ export function Hero() {
               }
               className="group flex h-14 w-full items-center justify-center gap-3 rounded-full border border-[var(--border)] bg-[var(--bg-surface)]/40 px-8 text-[var(--text-primary)] backdrop-blur-md transition-all duration-300 hover:border-[var(--primary)]/50 hover:bg-[var(--bg-surface)] hover:shadow-lg hover:shadow-[var(--primary)]/10 sm:w-auto"
             >
-              <span className="text-base font-medium sm:text-lg">See How It Works</span>
+              <span className="text-base font-medium sm:text-lg">
+                See How It Works
+              </span>
               <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform fill-[var(--text-primary)]/10" />
             </motion.button>
           </div>
@@ -88,7 +90,7 @@ export function Hero() {
         </motion.div>
 
         {/* Right Column: Dynamic Visuals */}
-        <div className="relative flex justify-center lg:justify-end">
+        <div className="relative flex overflow-visible justify-center lg:justify-end">
           {/* The Floating Phone */}
           <motion.div
             initial={{ opacity: 0, y: 50, rotate: 6 }}
@@ -96,54 +98,60 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
             className="relative z-20"
           >
-            <div className="relative h-[588px] w-[288px] sm:h-[661px] sm:w-[324px] md:h-[735px] md:w-[360px]">
+            <div className="relative z-30 h-[588px] w-[288px] sm:h-[661px] sm:w-[324px] md:h-[735px] md:w-[360px]">
               <div className="origin-top-left scale-[0.8] sm:scale-[0.9] md:scale-100">
                 <LivePhoneMockup />
               </div>
             </div>
 
             {/* Floating Elements around phone */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 20, y: 10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="absolute -right-36 top-12 z-0 hidden md:flex items-start gap-3"
+              className="pointer-events-none absolute md:-right-12 lg:-right-40 top-8 z-20 hidden md:block md:w-[240px] lg:w-[290px] rotate-[-1deg]"
             >
-              <div className="bg-[var(--bg-surface)]/80 backdrop-blur-xl border border-[var(--border)] p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] max-w-[170px]">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex gap-2 items-center">
-                    <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-[10px]">
-                      ✉️
-                    </div>
-                    <span className="text-[10px] uppercase font-bold text-[var(--text-muted)] tracking-wider">
-                      SMS
+              <div className="rounded-[1.2rem] border border-[var(--border)] bg-[var(--bg-main)] p-4 shadow-[0_16px_34px_rgba(0,0,0,0.2)]">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--primary)]/15">
+                      <Bell className="h-3.5 w-3.5 text-[var(--primary)]" />
                     </span>
-                  </div>
-                  <span className="text-[9px] text-[var(--text-muted)]">
-                    Now
+                    SMS Alert
+                  </span>
+                  <span className="text-[10px] font-medium text-[var(--text-muted)]">
+                    2m ago
                   </span>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                    A/c XX89 debited for
+                <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">
+                  A/c XX89 debited by INR 450.00 at Starbucks.
+                </p>
+                <div className="mt-3 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] px-3 py-2">
+                  <p className="text-[9px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
+                    Amount
                   </p>
-                  <p className="text-sm font-bold text-[var(--text-primary)]">
-                    ₹ 350.00
+                  <p className="text-lg font-bold leading-none tracking-tight text-[var(--text-primary)]">
+                    INR 450.00
                   </p>
-                  <p className="text-[10px] text-[var(--text-muted)] truncate">
-                    at Starbucks...
+                </div>
+                <div className="mt-2.5 flex items-center justify-between">
+                  <p className="text-[10px] text-[var(--text-muted)]">
+                    Merchant: Starbucks
+                  </p>
+                  <p className="text-[9px] font-semibold text-[var(--primary)]">
+                    Auto-tagged
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: -20, y: -10 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
-              className="absolute -left-32 bottom-32 z-0 hidden md:flex items-center gap-3"
+              className="pointer-events-none absolute md:-left-10 lg:-left-24 bottom-28 z-20 hidden md:flex items-center gap-3"
             >
-              <div className="bg-[var(--bg-surface)]/80 backdrop-blur-xl border border-[var(--border)] p-3 pr-5 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center gap-3">
+              <div className="bg-[var(--bg-surface)] border border-[var(--border)] p-3 pr-5 rounded-2xl shadow-[0_10px_26px_rgba(0,0,0,0.16)] flex items-center gap-3">
                 <div className="relative">
                   <div className="w-10 h-10 rounded-full bg-[var(--primary)]/10 flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5 text-[var(--primary)]" />
@@ -161,7 +169,7 @@ export function Hero() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-transparent to-transparent z-10 pointer-events-none lg:hidden" />
