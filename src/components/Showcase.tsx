@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageSquare, Zap, ShieldCheck } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const steps = [
   {
@@ -28,30 +29,19 @@ export function Showcase() {
   return (
     <section
       id="how-it-works"
-      className="scroll-mt-28 py-24 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm"
+      className="scroll-mt-28 py-20 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm"
     >
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        <motion.div
-          className="w-full mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-4 block">
-            How it Works
-          </span>
-          <h2 className="mx-auto max-w-5xl text-4xl md:text-6xl font-bold leading-tight text-[var(--text-primary)] mb-6 tracking-tight">
-            Magic in your message inbox.
-            <br />
-            <span className="text-[var(--text-secondary)] opacity-60">
-              No manual entry needed.
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <SectionHeader
+          badge={
+            <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm">
+              How it Works
             </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-lg text-[var(--text-muted)] leading-relaxed">
-            No manual entry. No bank login required. Mudra listens to your SMS
-            notifications and does the heavy lifting instantly.
-          </p>
-        </motion.div>
+          }
+          title="Magic in your message inbox."
+          subtitle="No manual entry needed."
+          description="No manual entry. No bank login required. Mudra listens to your SMS notifications and does the heavy lifting instantly."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full relative">
           {/* Connecting Line (Desktop) */}

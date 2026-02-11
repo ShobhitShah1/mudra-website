@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const USER_NOTES = [
   {
@@ -23,33 +24,28 @@ const USER_NOTES = [
 
 const WEEK_FLOW = [
   { day: "Day 1", note: "Connect banks and set starting balances." },
-  { day: "Day 2", note: "Review first SMS sync and clean transaction history." },
-  { day: "Day 4", note: "Set reminder rules for recurring bills and subscriptions." },
+  {
+    day: "Day 2",
+    note: "Review first SMS sync and clean transaction history.",
+  },
+  {
+    day: "Day 4",
+    note: "Set reminder rules for recurring bills and subscriptions.",
+  },
   { day: "Day 7", note: "Check analytics trends and update budget decisions." },
 ];
 
 export function UserOutcomes() {
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/18 via-transparent to-[var(--primary)]/7" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 w-full text-center"
-        >
-          <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            Better flow, less friction.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Real outcomes after setup.
-            </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            Built to reduce mental load, not add another dashboard you forget.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Better flow, less friction."
+          subtitle="Real outcomes after setup."
+          description="Built to reduce mental load, not add another dashboard you forget."
+        />
 
         <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
@@ -99,7 +95,9 @@ export function UserOutcomes() {
                   <p className="text-xs font-semibold uppercase tracking-[0.1em] text-[var(--primary)]">
                     {step.day}
                   </p>
-                  <p className="mt-1 text-sm text-[var(--text-secondary)]">{step.note}</p>
+                  <p className="mt-1 text-sm text-[var(--text-secondary)]">
+                    {step.note}
+                  </p>
                 </div>
               ))}
             </div>

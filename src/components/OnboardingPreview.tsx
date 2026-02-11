@@ -2,13 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Hand,
-  Landmark,
-  Wallet,
-  ScanText,
-  CheckCircle2,
-} from "lucide-react";
+import { Hand, Landmark, Wallet, ScanText, CheckCircle2 } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 type OnboardingStep = {
   key: string;
@@ -30,24 +25,21 @@ const STEPS: OnboardingStep[] = [
     key: "banks",
     title: "Select Banks",
     subtitle: "Choose accounts",
-    detail:
-      "Pick the banks you use so imports map to the right accounts.",
+    detail: "Pick the banks you use so imports map to the right accounts.",
     icon: Landmark,
   },
   {
     key: "balance",
     title: "Set Balance",
     subtitle: "Starting point",
-    detail:
-      "Set initial balances once to keep totals and analytics accurate.",
+    detail: "Set initial balances once to keep totals and analytics accurate.",
     icon: Wallet,
   },
   {
     key: "sync",
     title: "Sync SMS",
     subtitle: "Scan and review",
-    detail:
-      "Mudra scans SMS on-device and lets you confirm each transaction.",
+    detail: "Mudra scans SMS on-device and lets you confirm each transaction.",
     icon: ScanText,
   },
   {
@@ -71,27 +63,15 @@ export function OnboardingPreview() {
   const StepIcon = step.icon;
 
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/20 via-transparent to-[var(--primary)]/7" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="w-full mb-12 text-center"
-        >
-          <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            Onboarding feels guided.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Setup takes minutes, not hours.
-            </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            This is the real app flow from welcome to first sync, designed to
-            get users productive quickly.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Onboarding feels guided."
+          subtitle="Setup takes minutes, not hours."
+          description="This is the real app flow from welcome to first sync, designed to get users productive quickly."
+        />
 
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10">
           <motion.div
@@ -150,7 +130,9 @@ export function OnboardingPreview() {
               <p className="text-sm font-semibold text-[var(--text-primary)]">
                 Step {activeStep + 1} of {STEPS.length}
               </p>
-              <p className="text-xs text-[var(--text-muted)]">{progress}% complete</p>
+              <p className="text-xs text-[var(--text-muted)]">
+                {progress}% complete
+              </p>
             </div>
 
             <div className="mb-5 h-2 overflow-hidden rounded-full bg-[var(--bg-surface)]">
@@ -186,7 +168,10 @@ export function OnboardingPreview() {
                   Preview Action
                 </p>
                 <p className="mt-1 text-sm text-[var(--text-primary)]">
-                  Continue to <span className="font-semibold">{STEPS[Math.min(activeStep + 1, STEPS.length - 1)].title}</span>
+                  Continue to{" "}
+                  <span className="font-semibold">
+                    {STEPS[Math.min(activeStep + 1, STEPS.length - 1)].title}
+                  </span>
                 </p>
               </div>
             </motion.div>

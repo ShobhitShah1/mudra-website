@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { BarChart3, CalendarRange, Landmark } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 type Period = "Day" | "Week" | "Month" | "All";
 type Bank = "All" | "HDFC" | "SBI" | "ICICI";
@@ -27,27 +28,91 @@ const ANALYTICS_POINTS: Record<Period, Point[]> = {
     { label: "21", total: 800, byBank: { HDFC: 250, SBI: 300, ICICI: 250 } },
   ],
   Week: [
-    { label: "Mon", total: 4200, byBank: { HDFC: 2100, SBI: 1200, ICICI: 900 } },
-    { label: "Tue", total: 3600, byBank: { HDFC: 1700, SBI: 800, ICICI: 1100 } },
-    { label: "Wed", total: 5300, byBank: { HDFC: 2600, SBI: 1200, ICICI: 1500 } },
-    { label: "Thu", total: 4100, byBank: { HDFC: 1800, SBI: 1400, ICICI: 900 } },
-    { label: "Fri", total: 6200, byBank: { HDFC: 3000, SBI: 1400, ICICI: 1800 } },
-    { label: "Sat", total: 5100, byBank: { HDFC: 2100, SBI: 1600, ICICI: 1400 } },
+    {
+      label: "Mon",
+      total: 4200,
+      byBank: { HDFC: 2100, SBI: 1200, ICICI: 900 },
+    },
+    {
+      label: "Tue",
+      total: 3600,
+      byBank: { HDFC: 1700, SBI: 800, ICICI: 1100 },
+    },
+    {
+      label: "Wed",
+      total: 5300,
+      byBank: { HDFC: 2600, SBI: 1200, ICICI: 1500 },
+    },
+    {
+      label: "Thu",
+      total: 4100,
+      byBank: { HDFC: 1800, SBI: 1400, ICICI: 900 },
+    },
+    {
+      label: "Fri",
+      total: 6200,
+      byBank: { HDFC: 3000, SBI: 1400, ICICI: 1800 },
+    },
+    {
+      label: "Sat",
+      total: 5100,
+      byBank: { HDFC: 2100, SBI: 1600, ICICI: 1400 },
+    },
     { label: "Sun", total: 2900, byBank: { HDFC: 900, SBI: 1100, ICICI: 900 } },
   ],
   Month: [
-    { label: "W1", total: 22400, byBank: { HDFC: 10300, SBI: 6700, ICICI: 5400 } },
-    { label: "W2", total: 19700, byBank: { HDFC: 9200, SBI: 5200, ICICI: 5300 } },
-    { label: "W3", total: 24100, byBank: { HDFC: 11100, SBI: 6500, ICICI: 6500 } },
-    { label: "W4", total: 21600, byBank: { HDFC: 9800, SBI: 6200, ICICI: 5600 } },
+    {
+      label: "W1",
+      total: 22400,
+      byBank: { HDFC: 10300, SBI: 6700, ICICI: 5400 },
+    },
+    {
+      label: "W2",
+      total: 19700,
+      byBank: { HDFC: 9200, SBI: 5200, ICICI: 5300 },
+    },
+    {
+      label: "W3",
+      total: 24100,
+      byBank: { HDFC: 11100, SBI: 6500, ICICI: 6500 },
+    },
+    {
+      label: "W4",
+      total: 21600,
+      byBank: { HDFC: 9800, SBI: 6200, ICICI: 5600 },
+    },
   ],
   All: [
-    { label: "Jan", total: 82400, byBank: { HDFC: 35100, SBI: 23900, ICICI: 23400 } },
-    { label: "Feb", total: 76700, byBank: { HDFC: 32800, SBI: 22400, ICICI: 21500 } },
-    { label: "Mar", total: 81200, byBank: { HDFC: 34400, SBI: 23200, ICICI: 23600 } },
-    { label: "Apr", total: 88900, byBank: { HDFC: 37600, SBI: 25800, ICICI: 25500 } },
-    { label: "May", total: 84600, byBank: { HDFC: 35800, SBI: 24600, ICICI: 24200 } },
-    { label: "Jun", total: 90300, byBank: { HDFC: 39000, SBI: 26200, ICICI: 25100 } },
+    {
+      label: "Jan",
+      total: 82400,
+      byBank: { HDFC: 35100, SBI: 23900, ICICI: 23400 },
+    },
+    {
+      label: "Feb",
+      total: 76700,
+      byBank: { HDFC: 32800, SBI: 22400, ICICI: 21500 },
+    },
+    {
+      label: "Mar",
+      total: 81200,
+      byBank: { HDFC: 34400, SBI: 23200, ICICI: 23600 },
+    },
+    {
+      label: "Apr",
+      total: 88900,
+      byBank: { HDFC: 37600, SBI: 25800, ICICI: 25500 },
+    },
+    {
+      label: "May",
+      total: 84600,
+      byBank: { HDFC: 35800, SBI: 24600, ICICI: 24200 },
+    },
+    {
+      label: "Jun",
+      total: 90300,
+      byBank: { HDFC: 39000, SBI: 26200, ICICI: 25100 },
+    },
   ],
 };
 
@@ -104,38 +169,32 @@ export function AnalyticsPlayground() {
   );
 
   const peak = useMemo(
-    () => points.reduce((max, point) => (point.value > max.value ? point : max), points[0]),
+    () =>
+      points.reduce(
+        (max, point) => (point.value > max.value ? point : max),
+        points[0],
+      ),
     [points],
   );
 
   const max = Math.max(...points.map((point) => point.value), 1);
 
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/20 via-transparent to-[var(--primary)]/8" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-12 max-w-3xl text-center"
-        >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
-            <BarChart3 className="h-3.5 w-3.5 text-[var(--primary)]" />
-            Analytics Playground
-          </span>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            Filter by period and bank.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              See the trend change live.
+        <SectionHeader
+          badge={
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+              <BarChart3 className="h-3.5 w-3.5 text-[var(--primary)]" />
+              Analytics Playground
             </span>
-          </h2>
-          <p className="text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            This mirrors the app analytics controls with period selection,
-            bank filtering, and instant trend updates.
-          </p>
-        </motion.div>
+          }
+          title="Filter by period and bank."
+          subtitle="See the trend change live."
+          description="This mirrors the app analytics controls with period selection, bank filtering, and instant trend updates."
+        />
 
         <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--bg-main)]/68 p-6 shadow-[0_24px_64px_-35px_rgba(0,0,0,0.55)] backdrop-blur-lg md:p-8">
           <div className="mb-6 grid gap-4 md:grid-cols-2">
@@ -226,10 +285,16 @@ export function AnalyticsPlayground() {
                         height: Math.max(10, (point.value / max) * 210),
                         opacity: 1,
                       }}
-                      transition={{ type: "spring", stiffness: 120, damping: 18 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 120,
+                        damping: 18,
+                      }}
                     />
                   </div>
-                  <p className="text-xs text-[var(--text-muted)]">{point.label}</p>
+                  <p className="text-xs text-[var(--text-muted)]">
+                    {point.label}
+                  </p>
                 </div>
               ))}
             </div>

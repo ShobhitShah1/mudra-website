@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, LoaderCircle, Shield, ScanText } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 type SyncPhase = "idle" | "syncing" | "review" | "done";
 
@@ -86,7 +87,9 @@ export function SmsSyncSimulator() {
           : "idle";
       return {
         phase: safePhase,
-        selectedIds: Array.isArray(parsed.selectedIds) ? parsed.selectedIds : [],
+        selectedIds: Array.isArray(parsed.selectedIds)
+          ? parsed.selectedIds
+          : [],
       };
     } catch {
       window.localStorage.removeItem(SYNC_SIM_STORAGE_KEY);
@@ -94,7 +97,9 @@ export function SmsSyncSimulator() {
     }
   }, []);
 
-  const [phase, setPhase] = useState<SyncPhase>(() => persistedState?.phase ?? "idle");
+  const [phase, setPhase] = useState<SyncPhase>(
+    () => persistedState?.phase ?? "idle",
+  );
   const [progress, setProgress] = useState(() =>
     persistedState && persistedState.phase !== "idle" ? 100 : 0,
   );
@@ -131,7 +136,9 @@ export function SmsSyncSimulator() {
 
     const state: PersistedSyncState = {
       phase,
-      selectedIds: transactions.filter((txn) => txn.selected).map((txn) => txn.id),
+      selectedIds: transactions
+        .filter((txn) => txn.selected)
+        .map((txn) => txn.id),
     };
     window.localStorage.setItem(SYNC_SIM_STORAGE_KEY, JSON.stringify(state));
   }, [phase, transactions]);
@@ -169,31 +176,21 @@ export function SmsSyncSimulator() {
   };
 
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--primary)]/6 via-transparent to-[var(--accent)]/6" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-12 max-w-3xl text-center"
-        >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
-            <ScanText className="h-3.5 w-3.5 text-[var(--primary)]" />
-            SMS Sync Simulator
-          </span>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            Scan, review, and import.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Just like in the app.
+        <SectionHeader
+          badge={
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+              <ScanText className="h-3.5 w-3.5 text-[var(--primary)]" />
+              SMS Sync Simulator
             </span>
-          </h2>
-          <p className="text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            Simulates the real SMS sync flow: scan transactions, choose entries,
-            and import only what you approve.
-          </p>
-        </motion.div>
+          }
+          title="Scan, review, and import."
+          subtitle="Just like in the app."
+          description="Simulates the real SMS sync flow: scan transactions, choose entries, and import only what you approve."
+        />
 
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
           <motion.div
@@ -207,12 +204,14 @@ export function SmsSyncSimulator() {
             </p>
 
             <div className="mb-4 flex items-center gap-2 text-xs font-medium">
-              {([
-                ["idle", "Idle"],
-                ["syncing", "Scanning"],
-                ["review", "Review"],
-                ["done", "Imported"],
-              ] as Array<[SyncPhase, string]>).map(([value, label]) => (
+              {(
+                [
+                  ["idle", "Idle"],
+                  ["syncing", "Scanning"],
+                  ["review", "Review"],
+                  ["done", "Imported"],
+                ] as Array<[SyncPhase, string]>
+              ).map(([value, label]) => (
                 <span
                   key={value}
                   className={`rounded-full px-3 py-1 ${
@@ -339,7 +338,8 @@ export function SmsSyncSimulator() {
                     Ready to scan securely
                   </p>
                   <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                    100% on-device processing. You always choose what gets added.
+                    100% on-device processing. You always choose what gets
+                    added.
                   </p>
                 </motion.div>
               )}
@@ -397,7 +397,8 @@ export function SmsSyncSimulator() {
                               : "text-[var(--text-primary)]"
                           }`}
                         >
-                          {txn.type === "income" ? "+" : "-"}INR {txn.amount.toLocaleString("en-IN")}
+                          {txn.type === "income" ? "+" : "-"}INR{" "}
+                          {txn.amount.toLocaleString("en-IN")}
                         </p>
                         <p className="text-xs text-[var(--text-muted)]">
                           {txn.selected ? "Selected" : "Skipped"}

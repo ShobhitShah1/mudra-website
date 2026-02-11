@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import Link from "next/link";
 import { FAQ_ITEMS } from "@/lib/faq";
 
@@ -10,25 +11,21 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/15 via-transparent to-[var(--primary)]/8" />
 
       <div className="relative mx-auto max-w-7xl">
-        <div className="mb-12 w-full text-center">
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
-            <HelpCircle className="h-3.5 w-3.5 text-[var(--primary)]" />
-            FAQ
-          </span>
-          <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            Everything you need.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Nothing you do not.
+        <SectionHeader
+          badge={
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+              <HelpCircle className="h-3.5 w-3.5 text-[var(--primary)]" />
+              FAQ
             </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            Straight answers about privacy, permissions, and how Mudra works.
-          </p>
-        </div>
+          }
+          title="Everything you need."
+          subtitle="Nothing you do not."
+          description="Straight answers about privacy, permissions, and how Mudra works."
+        />
 
         <div className="mx-auto max-w-4xl space-y-3">
           {FAQ_ITEMS.map((item, index) => {
@@ -80,7 +77,10 @@ export function FaqSection() {
 
         <p className="mt-8 text-center text-sm text-[var(--text-muted)]">
           Need more details? Read our{" "}
-          <Link href="/privacy" className="text-[var(--primary)] hover:underline">
+          <Link
+            href="/privacy"
+            className="text-[var(--primary)] hover:underline"
+          >
             Privacy Policy
           </Link>{" "}
           and{" "}

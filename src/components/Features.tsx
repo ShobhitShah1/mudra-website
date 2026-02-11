@@ -9,91 +9,96 @@ import {
   Palette,
   Lock,
 } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
+// Feature data
 const features = [
   {
-    icon: <Zap className="w-6 h-6 text-[var(--primary)]" />,
+    icon: <Zap className="w-5 h-5" />,
     title: "Instant Automation",
-    description:
-      "Parses bank SMS alerts locally to track expenses instantly without manual entry.",
+    description: "Parses bank SMS alerts locally. No manual entry required.",
+    color: "decoration-amber-500",
+    hoverBg: "hover:bg-amber-500/5",
+    iconColor: "text-amber-500",
   },
   {
-    icon: <Shield className="w-6 h-6 text-[var(--success)]" />,
+    icon: <Shield className="w-5 h-5" />,
     title: "Privacy First",
     description:
-      "Zero data leaves your phone. Everything is processed and stored locally on-device.",
+      "Zero data leaves your phone. Everything is processed locally.",
+    color: "decoration-emerald-500",
+    hoverBg: "hover:bg-emerald-500/5",
+    iconColor: "text-emerald-500",
   },
   {
-    icon: <BarChart3 className="w-6 h-6 text-[var(--accent)]" />,
+    icon: <BarChart3 className="w-5 h-5" />,
     title: "Visual Analytics",
-    description:
-      "Interactive charts and deep category breakdowns to truly understand spending habits.",
+    description: "Interactive charts and deep category breakdowns.",
+    color: "decoration-blue-500",
+    hoverBg: "hover:bg-blue-500/5",
+    iconColor: "text-blue-500",
   },
   {
-    icon: <Palette className="w-6 h-6 text-[var(--warning)]" />,
+    icon: <Palette className="w-5 h-5" />,
     title: "Dynamic Themes",
-    description:
-      "Switch between Coffee, Neon, Dark, and more to perfectly match your personal vibe.",
+    description: "Switch between Coffee, Neon, and Dark to match your vibe.",
+    color: "decoration-purple-500",
+    hoverBg: "hover:bg-purple-500/5",
+    iconColor: "text-purple-500",
   },
   {
-    icon: <Lock className="w-6 h-6 text-[var(--danger)]" />,
+    icon: <Lock className="w-5 h-5" />,
     title: "Secure Access",
-    description:
-      "Biometric authentication (FaceID/TouchID) ensures your financial data stays yours.",
+    description: "Biometric authentication (FaceID/TouchID) included.",
+    color: "decoration-rose-500",
+    hoverBg: "hover:bg-rose-500/5",
+    iconColor: "text-rose-500",
   },
   {
-    icon: <Smartphone className="w-6 h-6 text-[var(--text-primary)]" />,
+    icon: <Smartphone className="w-5 h-5" />,
     title: "Offline Ready",
-    description:
-      "Works perfectly without internet. Your financial data is always available instantly.",
+    description: "Works perfectly without internet. Data is always available.",
+    color: "decoration-gray-500",
+    hoverBg: "hover:bg-gray-500/5",
+    iconColor: "text-gray-500",
   },
 ];
 
 export function Features() {
   return (
-    <section className="relative overflow-hidden px-4 py-20 md:py-32">
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/20 to-transparent pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-[var(--text-primary)] tracking-tight">
-            Everything you need. <br />
-            <span className="text-[var(--text-secondary)] opacity-60">
-              Nothing you don&apos;t.
-            </span>
-          </h2>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] md:text-xl">
-            Packed with powerful automated features to help you master your
-            finances while staying completely private.
-          </p>
-        </motion.div>
+    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+      <div className="relative mx-auto max-w-7xl">
+        <SectionHeader
+          title="Everything you need."
+          subtitle="Nothing you don't."
+          description="Powerful features, zero clutter."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="group rounded-[2.2rem] border border-[var(--border)]/60 bg-[var(--bg-surface)]/60 p-7 backdrop-blur-lg transition-all duration-300 hover:border-[var(--primary)]/30 hover:bg-[var(--bg-surface)] hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)] sm:p-10"
+              transition={{ delay: idx * 0.05 }}
+              className={`group flex items-start gap-4 p-4 rounded-2xl transition-colors duration-300 ${feature.hoverBg}`}
             >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--border)] bg-[var(--bg-main)] shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:border-[var(--primary)]/30 sm:mb-8 sm:h-16 sm:w-16">
+              <div
+                className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-xl border border-[var(--border)] bg-[var(--bg-surface)] ${feature.iconColor} group-hover:scale-110 transition-transform duration-300`}
+              >
                 {feature.icon}
               </div>
-              <h3 className="mb-3 text-xl font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--primary)] sm:mb-4 sm:text-2xl">
-                {feature.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--text-secondary)] transition-colors group-hover:text-[var(--text-primary)] sm:text-base">
-                {feature.description}
-              </p>
+              <div>
+                <h3
+                  className={`text-lg font-semibold text-[var(--text-primary)] mb-1 decoration-2 underline-offset-4 group-hover:underline ${feature.color}`}
+                >
+                  {feature.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors">
+                  {feature.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

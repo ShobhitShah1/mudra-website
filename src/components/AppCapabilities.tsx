@@ -10,6 +10,7 @@ import {
   Smartphone,
   WalletCards,
 } from "lucide-react";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 const CAPABILITIES = [
   {
@@ -46,27 +47,15 @@ const CAPABILITIES = [
 
 export function AppCapabilities() {
   return (
-    <section className="relative overflow-hidden px-4 py-24 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--primary)]/7 via-transparent to-[var(--bg-surface)]/25" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-12 w-full text-center"
-        >
-          <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            More than SMS parsing.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Built for full money management.
-            </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            These features are already in the app and designed to work together
-            without adding clutter.
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="More than SMS parsing."
+          subtitle="Built for full money management."
+          description="These features are already in the app and designed to work together without adding clutter."
+        />
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {CAPABILITIES.map((capability, index) => {

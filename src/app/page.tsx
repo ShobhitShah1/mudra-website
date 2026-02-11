@@ -58,7 +58,7 @@ export default function Home() {
         <FaqSection />
       </div>
 
-      <section className="py-32 text-center bg-gradient-to-t from-[var(--bg-surface)] to-[var(--bg-main)]">
+      <section className="py-24 text-center bg-gradient-to-t from-[var(--bg-surface)] to-[var(--bg-main)]">
         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[var(--text-primary)] tracking-tight">
           Ready to take control?
           <br />

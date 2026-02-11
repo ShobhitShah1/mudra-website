@@ -7,6 +7,7 @@ import {
   LivePhoneMockup,
   LivePhoneMockupHandle,
 } from "@/components/LivePhoneMockup";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 type DemoScenario = {
   label: string;
@@ -115,32 +116,22 @@ export function InteractiveDemo() {
   return (
     <section
       id="demo"
-      className="scroll-mt-28 relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-24 sm:px-6"
+      className="scroll-mt-28 relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-20 sm:px-6"
     >
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="w-full mb-12 text-center"
-        >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
-            <Sparkles className="h-3.5 w-3.5 text-[var(--primary)]" />
-            Interactive Demo
-          </span>
-          <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
-            See Mudra work live.
-            <span className="block text-[var(--text-secondary)] opacity-60">
-              Inside the real app mockup.
+        <SectionHeader
+          badge={
+            <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
+              <Sparkles className="h-3.5 w-3.5 text-[var(--primary)]" />
+              Interactive Demo
             </span>
-          </h2>
-          <p className="mx-auto max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            Parse a sample SMS and watch the device update with top
-            notifications in real time.
-          </p>
-        </motion.div>
+          }
+          title="See Mudra work live."
+          subtitle="Inside the real app mockup."
+          description="Parse a sample SMS and watch the device update with top notifications in real time."
+        />
 
         <div className="grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <motion.div
