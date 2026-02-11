@@ -117,38 +117,37 @@ const ANALYTICS_POINTS: Record<Period, Point[]> = {
 };
 
 export function AnalyticsPlayground() {
-  const [period, setPeriod] = useState<Period>(() => {
-    if (typeof window === "undefined") return "Week";
-    try {
-      const raw = window.localStorage.getItem(ANALYTICS_FILTER_STORAGE_KEY);
-      if (!raw) return "Week";
-      const parsed = JSON.parse(raw) as { period?: Period };
-      return parsed.period && PERIODS.includes(parsed.period)
-        ? parsed.period
-        : "Week";
-    } catch {
-      return "Week";
-    }
-  });
-  const [bank, setBank] = useState<Bank>(() => {
-    if (typeof window === "undefined") return "All";
-    try {
-      const raw = window.localStorage.getItem(ANALYTICS_FILTER_STORAGE_KEY);
-      if (!raw) return "All";
-      const parsed = JSON.parse(raw) as { bank?: Bank };
-      return parsed.bank && BANKS.includes(parsed.bank) ? parsed.bank : "All";
-    } catch {
-      return "All";
-    }
-  });
+  const [period, setPeriod] = useState<Period>("Week");
+  const [bank, setBank] = useState<Bank>("All");
+  const [hasRestoredFilters, setHasRestoredFilters] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem(ANALYTICS_FILTER_STORAGE_KEY);
+    if (!raw) {
+      setHasRestoredFilters(true);
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(raw) as { period?: Period; bank?: Bank };
+      if (parsed.period && PERIODS.includes(parsed.period)) {
+        setPeriod(parsed.period);
+      }
+      if (parsed.bank && BANKS.includes(parsed.bank)) {
+        setBank(parsed.bank);
+      }
+    } finally {
+      setHasRestoredFilters(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasRestoredFilters) return;
     window.localStorage.setItem(
       ANALYTICS_FILTER_STORAGE_KEY,
       JSON.stringify({ period, bank }),
     );
-  }, [period, bank]);
+  }, [period, bank, hasRestoredFilters]);
 
   const points = useMemo(() => {
     const source = ANALYTICS_POINTS[period];

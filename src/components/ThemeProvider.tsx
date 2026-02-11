@@ -14,11 +14,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [themeName, setThemeName] = useState("coffee");
   const [theme, setTheme] = useState<Theme>(THEMES.coffee);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -46,9 +41,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Ensure context is available even before mount/hydration limit is lifted
   return (
     <ThemeContext.Provider value={{ themeName, theme, setTheme: changeTheme }}>
-      <div style={{ visibility: mounted ? "visible" : "hidden" }}>
-        {children}
-      </div>
+      {children}
     </ThemeContext.Provider>
   );
 }

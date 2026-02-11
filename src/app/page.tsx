@@ -8,6 +8,7 @@ import { SmsSyncSimulator } from "@/components/SmsSyncSimulator";
 import { AnalyticsPlayground } from "@/components/AnalyticsPlayground";
 import { AppCapabilities } from "@/components/AppCapabilities";
 import { UserOutcomes } from "@/components/UserOutcomes";
+import { WhoItsFor } from "@/components/WhoItsFor";
 import { ObjectionHandling } from "@/components/ObjectionHandling";
 import { FaqSection } from "@/components/FaqSection";
 import { StickyInstallBar } from "@/components/StickyInstallBar";
@@ -52,7 +53,8 @@ export default function Home() {
       <div id="app-features" className="scroll-mt-28">
         <AppCapabilities />
       </div>
-      <UserOutcomes />
+      {/* <UserOutcomes /> */}
+      <WhoItsFor />
       <ObjectionHandling />
       <div id="faq" className="scroll-mt-28">
         <FaqSection />

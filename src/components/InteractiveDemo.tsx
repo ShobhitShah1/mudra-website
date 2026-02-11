@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Sparkles } from "lucide-react";
 import {
@@ -27,6 +27,11 @@ const DEMO_INPUT_STORAGE_KEY = "mudra_demo_sms_input";
 
 export function InteractiveDemo() {
   const phoneRef = useRef<LivePhoneMockupHandle>(null);
+  const isHydrated = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const [input, setInput] = useState(() => {
     if (typeof window === "undefined") return "";
     return window.localStorage.getItem(DEMO_INPUT_STORAGE_KEY) ?? "";
@@ -45,9 +50,9 @@ export function InteractiveDemo() {
   };
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (!isHydrated) return;
     window.localStorage.setItem(DEMO_INPUT_STORAGE_KEY, input);
-  }, [input]);
+  }, [input, isHydrated]);
 
   useEffect(() => {
     if (!mockupNotice) return;
@@ -205,7 +210,7 @@ export function InteractiveDemo() {
                 </label>
                 <div className="flex flex-col gap-3">
                   <textarea
-                    value={input}
+                    value={isHydrated ? input : ""}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="e.g. Paid Rs 450 at Starbucks..."
                     className="h-24 w-full resize-none rounded-xl border border-[var(--border)] bg-[var(--bg-main)] px-3 py-2 font-mono text-sm text-[var(--text-primary)] outline-none transition-colors placeholder:text-[var(--text-muted)]/60 focus:border-[var(--primary)]"
@@ -214,7 +219,7 @@ export function InteractiveDemo() {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={handleSend}
-                      disabled={!input.trim() || isProcessing}
+                      disabled={!isHydrated || !input.trim() || isProcessing}
                       className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-[var(--primary)] px-4 text-sm font-semibold text-[var(--bg-main)] transition-all hover:opacity-90 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <Send

@@ -25,9 +25,7 @@ const SURPRISE_NOTES = [
 
 export function QrQuickAccess() {
   const [isOpen, setIsOpen] = useState(false);
-  const [noteIndex] = useState(() =>
-    Math.floor(Math.random() * SURPRISE_NOTES.length),
-  );
+  const noteIndex = APP_DOWNLOAD_URL.length % SURPRISE_NOTES.length;
 
   useEffect(() => {
     if (!isOpen) return;

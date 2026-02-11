@@ -74,42 +74,11 @@ type PersistedSyncState = {
 };
 
 export function SmsSyncSimulator() {
-  const persistedState = useMemo<PersistedSyncState | null>(() => {
-    if (typeof window === "undefined") return null;
-    const raw = window.localStorage.getItem(SYNC_SIM_STORAGE_KEY);
-    if (!raw) return null;
-
-    try {
-      const parsed = JSON.parse(raw) as PersistedSyncState;
-      const safePhase: SyncPhase =
-        parsed.phase === "review" || parsed.phase === "done"
-          ? parsed.phase
-          : "idle";
-      return {
-        phase: safePhase,
-        selectedIds: Array.isArray(parsed.selectedIds)
-          ? parsed.selectedIds
-          : [],
-      };
-    } catch {
-      window.localStorage.removeItem(SYNC_SIM_STORAGE_KEY);
-      return null;
-    }
-  }, []);
-
-  const [phase, setPhase] = useState<SyncPhase>(
-    () => persistedState?.phase ?? "idle",
-  );
-  const [progress, setProgress] = useState(() =>
-    persistedState && persistedState.phase !== "idle" ? 100 : 0,
-  );
-  const [transactions, setTransactions] = useState<MockTransaction[]>(() => {
-    const selectedIds = new Set(persistedState?.selectedIds ?? []);
-    return BASE_TRANSACTIONS.map((txn) => ({
-      ...txn,
-      selected: selectedIds.size ? selectedIds.has(txn.id) : txn.selected,
-    }));
-  });
+  const [phase, setPhase] = useState<SyncPhase>("idle");
+  const [progress, setProgress] = useState(0);
+  const [transactions, setTransactions] =
+    useState<MockTransaction[]>(BASE_TRANSACTIONS);
+  const [hasRestoredState, setHasRestoredState] = useState(false);
 
   const selected = useMemo(
     () => transactions.filter((txn) => txn.selected),
@@ -131,7 +100,39 @@ export function SmsSyncSimulator() {
   );
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const raw = window.localStorage.getItem(SYNC_SIM_STORAGE_KEY);
+    if (!raw) {
+      setHasRestoredState(true);
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(raw) as PersistedSyncState;
+      const safePhase: SyncPhase =
+        parsed.phase === "review" || parsed.phase === "done"
+          ? parsed.phase
+          : "idle";
+      const selectedIds = new Set(
+        Array.isArray(parsed.selectedIds) ? parsed.selectedIds : [],
+      );
+
+      setPhase(safePhase);
+      setProgress(safePhase === "idle" ? 0 : 100);
+      setTransactions(
+        BASE_TRANSACTIONS.map((txn) => ({
+          ...txn,
+          selected: selectedIds.size ? selectedIds.has(txn.id) : txn.selected,
+        })),
+      );
+    } catch {
+      window.localStorage.removeItem(SYNC_SIM_STORAGE_KEY);
+    } finally {
+      setHasRestoredState(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasRestoredState) return;
     if (phase === "syncing") return;
 
     const state: PersistedSyncState = {
@@ -141,7 +142,7 @@ export function SmsSyncSimulator() {
         .map((txn) => txn.id),
     };
     window.localStorage.setItem(SYNC_SIM_STORAGE_KEY, JSON.stringify(state));
-  }, [phase, transactions]);
+  }, [phase, transactions, hasRestoredState]);
 
   const startScan = async () => {
     setPhase("syncing");
