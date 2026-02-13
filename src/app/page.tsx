@@ -38,29 +38,29 @@ export default function Home() {
       <LandingTopNav />
       <ThemeSwitcher />
 
-      <div id="top" className="scroll-mt-28">
+      <div id="top" className="scroll-mt-20">
         <Hero />
       </div>
       <Showcase />
       <OnboardingPreview />
-      <div id="feature-grid" className="scroll-mt-28">
+      <div id="feature-grid" className="scroll-mt-20">
         <Features />
       </div>
       {/* <ThemeShowcase /> */}
       <InteractiveDemo />
       <SmsSyncSimulator />
       <AnalyticsPlayground />
-      <div id="app-features" className="scroll-mt-28">
+      <div id="app-features" className="scroll-mt-20">
         <AppCapabilities />
       </div>
       {/* <UserOutcomes /> */}
       <WhoItsFor />
       <ObjectionHandling />
-      <div id="faq" className="scroll-mt-28">
+      <div id="faq" className="scroll-mt-20">
         <FaqSection />
       </div>
 
-      <section className="py-24 text-center bg-gradient-to-t from-[var(--bg-surface)] to-[var(--bg-main)]">
+      <section className="py-16 text-center bg-gradient-to-t from-[var(--bg-surface)] to-[var(--bg-main)] md:py-20">
         <h2 className="text-4xl md:text-6xl font-bold mb-8 text-[var(--text-primary)] tracking-tight">
           Ready to take control?
           <br />

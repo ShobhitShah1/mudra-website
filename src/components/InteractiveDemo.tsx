@@ -121,7 +121,7 @@ export function InteractiveDemo() {
   return (
     <section
       id="demo"
-      className="scroll-mt-28 relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-20 sm:px-6"
+      className="scroll-mt-20 relative overflow-hidden bg-[var(--bg-surface-alt)]/20 px-4 py-14 sm:px-6 md:py-16"
     >
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-[var(--primary)]/5 to-transparent" />
 

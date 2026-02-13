@@ -29,7 +29,7 @@ export function Showcase() {
   return (
     <section
       id="how-it-works"
-      className="scroll-mt-28 py-20 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm"
+      className="scroll-mt-20 py-14 px-4 overflow-hidden relative bg-[var(--bg-surface-alt)]/30 backdrop-blur-sm md:py-16"
     >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         <SectionHeader
@@ -70,10 +70,10 @@ export function Showcase() {
                 </div>
               </div>
 
-              <h3 className="text-xl font-bold mb-3 text-[var(--text-primary)]">
+              <h3 className="text-xl font-bold mb-3 text-center text-[var(--text-primary)]">
                 {item.title}
               </h3>
-              <p className="text-[var(--text-secondary)] text-sm px-6 leading-relaxed">
+              <p className="text-center text-[var(--text-secondary)] text-sm px-6 leading-relaxed">
                 {item.desc}
               </p>
             </motion.div>

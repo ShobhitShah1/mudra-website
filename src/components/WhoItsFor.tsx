@@ -20,7 +20,7 @@ const NOT_A_GOOD_FIT = [
 
 export function WhoItsFor() {
   return (
-    <section className="relative overflow-hidden px-4 py-20 sm:px-6">
+    <section className="relative overflow-hidden px-4 py-14 sm:px-6 md:py-16">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[var(--bg-surface)]/20 via-transparent to-[var(--primary)]/8" />
 
       <div className="relative mx-auto max-w-7xl">

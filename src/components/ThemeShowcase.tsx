@@ -139,7 +139,7 @@ export function ThemeShowcase() {
   const [activeTheme, setActiveTheme] = useState(THEMES[0]);
 
   return (
-    <section className="py-24 px-4 relative overflow-hidden bg-[var(--bg-main)]">
+    <section className="py-16 px-4 relative overflow-hidden bg-[var(--bg-main)] md:py-20">
       {/* Background Glow matching active theme */}
       <motion.div
         animate={{ backgroundColor: activeTheme.accentColor }}

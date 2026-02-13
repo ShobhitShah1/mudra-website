@@ -22,9 +22,9 @@ export function SectionHeader({
       initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`mx-auto mb-16 w-full text-center ${className}`}
+      className={`mx-auto mb-10 w-full text-center md:mb-12 ${className}`}
     >
-      {badge && <div className="mb-4">{badge}</div>}
+      {badge && <div className="mb-3">{badge}</div>}
       <h2 className="mx-auto mb-4 max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">
         {title}
         {subtitle && (
