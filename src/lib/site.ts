@@ -1,4 +1,4 @@
-import sharedConfig from "../../../../shared-config.json";
+import sharedConfig from "../../shared-config.json";
 
 export const SITE_NAME = sharedConfig.appName;
 export const SITE_TITLE = `${sharedConfig.appName} - Track Smarter. Save Better.`;
