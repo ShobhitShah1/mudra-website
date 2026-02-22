@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Footer } from "@/components/Footer";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type PrivacySection = {
   id: string;
@@ -177,10 +178,10 @@ export default function PrivacyPage() {
               If you have questions about how HoldMint handles your data, contact
               us at{" "}
               <a
-                href="mailto:privacy@holdmint.app"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="font-medium text-[var(--primary)] underline-offset-4 hover:underline"
               >
-                privacy@holdmint.app
+                {CONTACT_EMAIL}
               </a>
               . We publish policy updates directly in the app and on this page.
             </p>

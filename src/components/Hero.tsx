@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Download, CheckCircle2, PlayCircle, Bell } from "lucide-react";
+import { Download, CheckCircle2, PlayCircle } from "lucide-react";
 import { LivePhoneMockup } from "@/components/LivePhoneMockup";
 import { APP_DOWNLOAD_URL } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] flex-col items-center justify-start overflow-x-visible px-4 pb-8 pt-24 md:min-h-[108vh] md:pt-24">
+    <section className="relative flex min-h-[100svh] flex-col items-center justify-start overflow-x-visible bg-grid-pattern px-4 pb-8 pt-24 md:min-h-[108vh] md:pt-24">
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-[var(--primary)] opacity-[0.08] blur-[120px] rounded-full mix-blend-screen animate-pulse-slow" />
@@ -32,7 +32,7 @@ export function Hero() {
 
           <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-[var(--text-primary)] sm:text-5xl md:text-7xl lg:text-8xl">
             Finance <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--primary)] to-[var(--text-secondary)]">
+            <span className="text-gradient-premium">
               Automated.
             </span>
           </h1>
@@ -44,36 +44,76 @@ export function Hero() {
 
           <div className="mb-12 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center lg:justify-start">
             <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ y: -2, scale: 1.01 }}
+              whileTap={{ scale: 0.98, y: 0 }}
+              transition={{ type: "spring", stiffness: 360, damping: 28, mass: 0.8 }}
               href={APP_DOWNLOAD_URL}
               target="_blank"
               rel="noreferrer"
-              className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[var(--text-primary)] px-8 text-[var(--bg-main)] transition-all duration-300 hover:bg-[var(--primary)] hover:text-[var(--bg-main)] sm:w-auto"
+              className="group relative flex h-14 w-full min-w-[212px] items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)]/70 bg-white/[0.06] px-5 text-[var(--text-primary)] shadow-[0_10px_28px_-20px_rgba(0,0,0,0.55)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 ease-out hover:border-[var(--primary)]/45 hover:bg-white/[0.1] hover:shadow-[0_14px_30px_-22px_var(--primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-main)] sm:w-auto"
             >
-              <Download className="w-6 h-6 transition-transform duration-300" />
-              <div className="flex flex-col items-start leading-none ml-1 mt-1.5">
-                <span className="text-[10px] opacity-80 uppercase font-bold tracking-wider">
-                  Get it on
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.18),transparent)] translate-x-[-140%] transition-transform duration-500 ease-out group-hover:translate-x-[140%]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(160deg,rgba(255,255,255,0.14),rgba(255,255,255,0.02)_48%,rgba(255,255,255,0.09))]"
+              />
+              <span className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--primary)]/70 to-transparent opacity-75" />
+
+              <span className="relative z-10 flex w-full items-center justify-between gap-3">
+                <span className="inline-flex items-center gap-2.5">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/20 bg-white/10">
+                    <Download className="h-4 w-4 transition-transform duration-200 ease-out group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:-rotate-3" />
+                  </span>
+                  <span className="flex flex-col items-start leading-tight">
+                    <span className="text-sm font-semibold tracking-[0.01em]">
+                      Download App
+                    </span>
+                    <span className="text-[11px] font-medium text-[var(--text-secondary)]">
+                      Play Store
+                    </span>
+                  </span>
                 </span>
-                <span className="text-lg font-bold">Google Play</span>
-              </div>
+                <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--text-secondary)] transition-colors duration-200 group-hover:text-[var(--text-primary)]">
+                  Free
+                </span>
+              </span>
             </motion.a>
 
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              type="button"
+              whileHover={{ y: -2, scale: 1.01 }}
+              whileTap={{ scale: 0.98, y: 0 }}
+              transition={{ type: "spring", stiffness: 360, damping: 28, mass: 0.8 }}
               onClick={() =>
                 document
                   .getElementById("how-it-works")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="group flex h-14 w-full items-center justify-center gap-3 rounded-full border border-[var(--border)] bg-[var(--bg-surface)]/40 px-8 text-[var(--text-primary)] backdrop-blur-md transition-all duration-300 hover:border-[var(--primary)]/50 hover:bg-[var(--bg-surface)] hover:shadow-lg hover:shadow-[var(--primary)]/10 sm:w-auto"
+              className="group relative flex h-14 w-full min-w-[212px] items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)]/70 bg-white/[0.045] px-5 text-[var(--text-primary)] shadow-[0_10px_28px_-22px_rgba(0,0,0,0.5)] backdrop-blur-md transition-[border-color,background-color,box-shadow] duration-200 ease-out hover:border-[var(--accent)]/45 hover:bg-white/[0.085] hover:shadow-[0_14px_30px_-24px_var(--accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-main)] sm:w-auto"
             >
-              <span className="text-base font-medium sm:text-lg">
-                See How It Works
+              <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.16),transparent)] translate-x-[-130%] transition-transform duration-500 ease-out group-hover:translate-x-[130%]" />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-[linear-gradient(160deg,rgba(255,255,255,0.12),rgba(255,255,255,0.015)_48%,rgba(255,255,255,0.08))]"
+              />
+              <span className="pointer-events-none absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/65 to-transparent opacity-70" />
+
+              <span className="relative z-10 flex w-full items-center justify-between gap-4">
+                <span className="flex flex-col items-start leading-tight">
+                  <span className="text-sm font-semibold tracking-wide">
+                    Watch Demo
+                  </span>
+                  <span className="text-[11px] font-medium text-[var(--text-secondary)]">
+                    2 min walkthrough
+                  </span>
+                </span>
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/20 bg-white/10 transition-colors duration-200 group-hover:bg-white/14">
+                  <PlayCircle className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:scale-105" />
+                </span>
               </span>
-              <PlayCircle className="w-5 h-5 group-hover:scale-110 transition-transform fill-[var(--text-primary)]/10" />
             </motion.button>
           </div>
 

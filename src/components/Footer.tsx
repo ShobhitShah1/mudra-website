@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -18,11 +19,14 @@ export function Footer() {
           <Link href="/terms" className="transition-colors hover:text-[var(--primary)]">
             Terms of Service
           </Link>
+          <Link href="/contact" className="transition-colors hover:text-[var(--primary)]">
+            Contact
+          </Link>
           <a
-            href="mailto:privacy@holdmint.app"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="transition-colors hover:text-[var(--primary)]"
           >
-            Contact
+            Email
           </a>
         </div>
       </div>

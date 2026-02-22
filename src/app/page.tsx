@@ -41,21 +41,28 @@ export default function Home() {
       <div id="top" className="scroll-mt-20">
         <Hero />
       </div>
+
       <Showcase />
+
       <OnboardingPreview />
+
       <div id="feature-grid" className="scroll-mt-20">
         <Features />
       </div>
+
       {/* <ThemeShowcase /> */}
+
       <InteractiveDemo />
       <SmsSyncSimulator />
       <AnalyticsPlayground />
+
       <div id="app-features" className="scroll-mt-20">
         <AppCapabilities />
       </div>
-      {/* <UserOutcomes /> */}
+      {/* <UserOutcomes />
       <WhoItsFor />
-      <ObjectionHandling />
+      <ObjectionHandling /> */}
+
       <div id="faq" className="scroll-mt-20">
         <FaqSection />
       </div>

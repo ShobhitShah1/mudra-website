@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Palette, X, Check } from "lucide-react";
 import { THEMES } from "@/lib/themes";
@@ -10,6 +10,68 @@ import { cn } from "@/lib/utils";
 export function ThemeSwitcher() {
   const { themeName, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const themeKeys = useMemo(() => Object.keys(THEMES), []);
+
+  const cycleTheme = useCallback(
+    (direction: 1 | -1) => {
+      if (!themeKeys.length) return;
+      const currentIndex = themeKeys.indexOf(themeName);
+      const safeIndex = currentIndex === -1 ? 0 : currentIndex;
+      const nextIndex =
+        (safeIndex + direction + themeKeys.length) % themeKeys.length;
+      setTheme(themeKeys[nextIndex]);
+    },
+    [themeKeys, themeName, setTheme],
+  );
+
+  useEffect(() => {
+    const isTypingTarget = (target: EventTarget | null) => {
+      if (!(target instanceof HTMLElement)) return false;
+      const tag = target.tagName;
+      return (
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        target.isContentEditable
+      );
+    };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        if (isOpen) {
+          setIsOpen(false);
+          event.preventDefault();
+        }
+        return;
+      }
+
+      if (isTypingTarget(event.target)) return;
+
+      if (event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+        if (event.key.toLowerCase() === "t") {
+          event.preventDefault();
+          setIsOpen((prev) => !prev);
+          return;
+        }
+
+        if (event.key === "]") {
+          event.preventDefault();
+          cycleTheme(1);
+          setIsOpen(true);
+          return;
+        }
+
+        if (event.key === "[") {
+          event.preventDefault();
+          cycleTheme(-1);
+          setIsOpen(true);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [cycleTheme, isOpen]);
 
   return (
     <div className="pointer-events-none fixed bottom-24 right-4 z-50 flex flex-col items-end md:bottom-8 md:right-8">
@@ -31,6 +93,9 @@ export function ThemeSwitcher() {
                   {Object.keys(THEMES).length} Presets
                 </span>
               </div>
+              <p className="mb-3 px-1 text-[10px] text-[var(--text-muted)]">
+                Esc close | Alt+T open | Alt+[ or Alt+] change
+              </p>
 
               <div className="grid grid-cols-4 md:grid-cols-5 gap-4 max-h-[60vh] overflow-y-auto pr-2 scrollbar-hide py-4">
                 {Object.entries(THEMES).map(([key, theme]) => (
@@ -118,3 +183,4 @@ export function ThemeSwitcher() {
     </div>
   );
 }
+

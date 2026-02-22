@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Footer } from "@/components/Footer";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type TermsSection = {
   id: string;
@@ -166,10 +167,10 @@ export default function TermsPage() {
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)]">
               For legal or product terms questions, contact{" "}
               <a
-                href="mailto:support@holdmint.app"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="font-medium text-[var(--primary)] underline-offset-4 hover:underline"
               >
-                support@holdmint.app
+                {CONTACT_EMAIL}
               </a>
               . For data handling details, review the{" "}
               <Link

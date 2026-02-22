@@ -20,6 +20,22 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment Variables
+
+Create `.env.local` (already added in this workspace) and configure:
+
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_APP_DOWNLOAD_URL=https://play.google.com/store/apps/details?id=com.holdmint
+NEXT_PUBLIC_CONTACT_EMAIL=holdmintapp@gmail.com
+NEXT_PUBLIC_CONTACT_FORM_ENDPOINT=https://formsubmit.co/ajax/holdmintapp@gmail.com
+```
+
+Where these are used:
+
+- `src/lib/site.ts` reads `NEXT_PUBLIC_*` values for client/server URLs, contact email, and contact form endpoint.
+- `src/components/ContactFormCard.tsx` posts directly to the configured contact form endpoint (no mail app popup, no server route required).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

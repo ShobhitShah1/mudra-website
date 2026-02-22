@@ -25,6 +25,40 @@ const SAMPLE_MESSAGES: DemoScenario[] = [
 type NoticeTone = "neutral" | "success" | "info";
 const DEMO_INPUT_STORAGE_KEY = "holdmint_demo_sms_input";
 
+const normalizeText = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
+
+const extractMerchant = (text: string) => {
+  const normalized = normalizeText(text);
+
+  if (/(starbucks|starbuks|coffee)/.test(normalized)) return "Starbucks";
+  if (/(uber|ola|ride|cab|taxi)/.test(normalized)) return "Uber";
+  if (/(blinkit|grocer|basket|instamart)/.test(normalized)) return "Blinkit";
+  if (/(netflix|movie|subscription|ott)/.test(normalized)) return "Netflix";
+  if (/(salary|sallery|payroll|credited|deposit|refund|received)/.test(normalized)) {
+    return "Salary";
+  }
+
+  const atMatch = text.match(/\b(?:at|to)\s+([a-z][a-z0-9&.\-\s]{1,24})/i);
+  const cleaned = atMatch?.[1]?.trim().replace(/\s+/g, " ");
+  if (cleaned) {
+    return cleaned
+      .split(" ")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+      .join(" ");
+  }
+
+  return "Unknown";
+};
+
+const extractAmount = (text: string) => {
+  const amountMatch =
+    text.match(/(?:rs\.?|inr)\s*([\d,]+(?:\.\d+)?)/i) ||
+    text.match(/([\d,]+(?:\.\d+)?)/);
+  const rawAmount = amountMatch?.[1] ?? "0";
+  return Math.max(0, Number(rawAmount.replace(/,/g, "")) || 0);
+};
+
 export function InteractiveDemo() {
   const phoneRef = useRef<LivePhoneMockupHandle>(null);
   const isHydrated = useSyncExternalStore(
@@ -64,37 +98,17 @@ export function InteractiveDemo() {
     setIsProcessing(true);
 
     setTimeout(() => {
-      const amountMatch =
-        text.match(/(?:rs\.?|inr)\s*([\d,]+(?:\.\d+)?)/i) ||
-        text.match(/([\d,]+(?:\.\d+)?)/);
-      const amount = amountMatch ? amountMatch[1].replace(/,/g, "") : "0";
-      const parsedAmount = Math.max(0, Number(amount) || 0);
-
-      let merchant = "Unknown";
+      const safeText = typeof text === "string" ? text : "";
+      const parsedAmount = extractAmount(safeText);
+      const merchant = extractMerchant(safeText);
       let type: "expense" | "income" = "expense";
 
-      const lower = text.toLowerCase();
-      if (lower.includes("starbucks") || lower.includes("coffee")) {
-        merchant = "Starbucks";
-      } else if (
-        lower.includes("uber") ||
-        lower.includes("ola") ||
-        lower.includes("ride")
-      ) {
-        merchant = "Uber";
-      } else if (
-        lower.includes("blinkit") ||
-        lower.includes("groceries") ||
-        lower.includes("basket")
-      ) {
-        merchant = "Blinkit";
-      } else if (lower.includes("netflix") || lower.includes("movie")) {
-        merchant = "Netflix";
-      }
+      const lower = normalizeText(safeText);
 
       if (
         lower.includes("credited") ||
         lower.includes("salary") ||
+        lower.includes("sallery") ||
         lower.includes("refund") ||
         lower.includes("received") ||
         lower.includes("deposit")
