@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
             alignSelf: "flex-start",
           }}
         >
-          Mudra
+          HoldMint
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>

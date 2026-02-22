@@ -34,7 +34,7 @@ export function LandingTopNav() {
         }`}
       >
         <Link href="/" className="text-sm font-bold tracking-wide text-[var(--text-primary)]">
-          Mudra
+          HoldMint
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

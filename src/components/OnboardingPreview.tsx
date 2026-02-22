@@ -18,7 +18,7 @@ const STEPS: OnboardingStep[] = [
     key: "welcome",
     title: "Welcome",
     subtitle: "Set expectations",
-    detail: "Mudra explains privacy-first tracking before any sync starts.",
+    detail: "HoldMint explains privacy-first tracking before any sync starts.",
     icon: Hand,
   },
   {
@@ -39,7 +39,7 @@ const STEPS: OnboardingStep[] = [
     key: "sync",
     title: "Sync SMS",
     subtitle: "Scan and review",
-    detail: "Mudra scans SMS on-device and lets you confirm each transaction.",
+    detail: "HoldMint scans SMS on-device and lets you confirm each transaction.",
     icon: ScanText,
   },
   {

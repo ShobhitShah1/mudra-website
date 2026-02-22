@@ -23,9 +23,9 @@ const TERMS_SECTIONS: TermsSection[] = [
   {
     id: "use",
     title: "Use of the App",
-    summary: "Mudra is provided for personal finance tracking and insights.",
+    summary: "HoldMint is provided for personal finance tracking and insights.",
     points: [
-      "You can use Mudra to record expenses, review analytics, and manage reminders",
+      "You can use HoldMint to record expenses, review analytics, and manage reminders",
       "You agree to use the app lawfully and not misuse platform permissions",
       "Core features are designed for individual and household finance use",
     ],
@@ -47,7 +47,7 @@ const TERMS_SECTIONS: TermsSection[] = [
     title: "Data Ownership",
     summary: "You retain control of the data stored in your app.",
     points: [
-      "Mudra stores data locally on-device as part of a local-first architecture",
+      "HoldMint stores data locally on-device as part of a local-first architecture",
       "You are responsible for backup and restore decisions",
       "Deleting the app or local data may remove stored records",
     ],
@@ -56,10 +56,10 @@ const TERMS_SECTIONS: TermsSection[] = [
   {
     id: "disclaimer",
     title: "Financial Disclaimer",
-    summary: "Mudra supports financial tracking but is not financial advice.",
+    summary: "HoldMint supports financial tracking but is not financial advice.",
     points: [
       "Auto-parsed transactions should be reviewed by you before relying on them",
-      "Mudra does not provide investment, tax, or legal advice",
+      "HoldMint does not provide investment, tax, or legal advice",
       "You remain responsible for financial decisions and compliance obligations",
     ],
     icon: CircleAlert,
@@ -78,9 +78,9 @@ const TERMS_SECTIONS: TermsSection[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Mudra",
+  title: "Terms of Service | HoldMint",
   description:
-    "Mudra terms of service: app usage terms, optional permissions, and user responsibilities.",
+    "HoldMint terms of service: app usage terms, optional permissions, and user responsibilities.",
 };
 
 export default function TermsPage() {
@@ -115,7 +115,7 @@ export default function TermsPage() {
             </h1>
 
             <p className="mt-5 max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-              These terms explain how Mudra can be used, what you can expect
+              These terms explain how HoldMint can be used, what you can expect
               from the product, and what responsibilities remain with you while
               managing financial records.
             </p>
@@ -166,10 +166,10 @@ export default function TermsPage() {
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)]">
               For legal or product terms questions, contact{" "}
               <a
-                href="mailto:support@mudra.app"
+                href="mailto:support@holdmint.app"
                 className="font-medium text-[var(--primary)] underline-offset-4 hover:underline"
               >
-                support@mudra.app
+                support@holdmint.app
               </a>
               . For data handling details, review the{" "}
               <Link

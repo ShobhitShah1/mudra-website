@@ -40,7 +40,7 @@ const PRIVACY_SECTIONS: PrivacySection[] = [
   {
     id: "storage",
     title: "Where Data Lives",
-    description: "Mudra follows a local-first storage model.",
+    description: "HoldMint follows a local-first storage model.",
     details: [
       "Transaction parsing runs on-device",
       "Data is stored locally using app-private storage",
@@ -73,9 +73,9 @@ const PRIVACY_SECTIONS: PrivacySection[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Mudra",
+  title: "Privacy Policy | HoldMint",
   description:
-    "Mudra privacy policy: local-first processing, optional SMS access, and no tracking.",
+    "HoldMint privacy policy: local-first processing, optional SMS access, and no tracking.",
 };
 
 export default function PrivacyPage() {
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
             </h1>
 
             <p className="mt-5 max-w-4xl text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-              Mudra is built as a local-first expense tracker. We process your
+              HoldMint is built as a local-first expense tracker. We process your
               records on your device and keep permission access explicit,
               minimal, and transparent.
             </p>
@@ -174,13 +174,13 @@ export default function PrivacyPage() {
               Contact and Updates
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[var(--text-secondary)]">
-              If you have questions about how Mudra handles your data, contact
+              If you have questions about how HoldMint handles your data, contact
               us at{" "}
               <a
-                href="mailto:privacy@mudra.app"
+                href="mailto:privacy@holdmint.app"
                 className="font-medium text-[var(--primary)] underline-offset-4 hover:underline"
               >
-                privacy@mudra.app
+                privacy@holdmint.app
               </a>
               . We publish policy updates directly in the app and on this page.
             </p>

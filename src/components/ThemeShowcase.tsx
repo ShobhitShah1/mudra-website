@@ -168,7 +168,7 @@ export function ThemeShowcase() {
               </span>
             </h2>
             <p className="text-[var(--text-secondary)] text-lg mb-10 leading-relaxed max-w-md">
-              Mudra adapts to your style. Choose from over 15+ professionally
+              HoldMint adapts to your style. Choose from over 15+ professionally
               crafted themes or create your own. Dark mode included.
             </p>
 

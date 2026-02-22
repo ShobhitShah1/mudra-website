@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   keywords: [
-    "Mudra",
+    "HoldMint",
     "expense tracker",
     "SMS expense tracking",
     "privacy first finance app",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Mudra app preview",
+        alt: "HoldMint app preview",
       },
     ],
   },

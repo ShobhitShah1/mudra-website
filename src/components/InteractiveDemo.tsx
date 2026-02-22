@@ -23,7 +23,7 @@ const SAMPLE_MESSAGES: DemoScenario[] = [
 ];
 
 type NoticeTone = "neutral" | "success" | "info";
-const DEMO_INPUT_STORAGE_KEY = "mudra_demo_sms_input";
+const DEMO_INPUT_STORAGE_KEY = "holdmint_demo_sms_input";
 
 export function InteractiveDemo() {
   const phoneRef = useRef<LivePhoneMockupHandle>(null);
@@ -133,7 +133,7 @@ export function InteractiveDemo() {
               Interactive Demo
             </span>
           }
-          title="See Mudra work live."
+          title="See HoldMint work live."
           subtitle="Inside the real app mockup."
           description="Parse a sample SMS and watch the device update with top notifications in real time."
         />

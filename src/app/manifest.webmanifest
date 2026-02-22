@@ -1,6 +1,6 @@
 {
-  "name": "Mudra",
-  "short_name": "Mudra",
+  "name": "HoldMint",
+  "short_name": "HoldMint",
   "description": "A premium, privacy-focused expense tracking app that parses transaction SMS on-device with zero cloud dependency.",
   "start_url": "/",
   "display": "standalone",

@@ -25,9 +25,9 @@ export function WhoItsFor() {
 
       <div className="relative mx-auto max-w-7xl">
         <SectionHeader
-          title="Who Mudra is for."
+          title="Who HoldMint is for."
           subtitle="And who it is not for."
-          description="A quick filter so you can decide fast whether Mudra matches how you already manage money."
+          description="A quick filter so you can decide fast whether HoldMint matches how you already manage money."
         />
 
         <div className="grid gap-5 md:grid-cols-2">
