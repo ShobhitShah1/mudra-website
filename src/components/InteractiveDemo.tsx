@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +23,7 @@ const SAMPLE_MESSAGES: DemoScenario[] = [
 ];
 
 type NoticeTone = "neutral" | "success" | "info";
-const DEMO_INPUT_STORAGE_KEY = "holdmint_demo_sms_input";
+const DEMO_INPUT_STORAGE_KEY = "everyspend_demo_sms_input";
 
 const normalizeText = (value: string) =>
   value.toLowerCase().replace(/[^a-z0-9\s]/g, " ");
@@ -147,7 +147,7 @@ export function InteractiveDemo() {
               Interactive Demo
             </span>
           }
-          title="See HoldMint work live."
+          title="See EverySpend work live."
           subtitle="Inside the real app mockup."
           description="Parse a sample SMS and watch the device update with top notifications in real time."
         />

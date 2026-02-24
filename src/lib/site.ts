@@ -7,7 +7,7 @@ export const APP_DOWNLOAD_URL =
   process.env.NEXT_PUBLIC_APP_DOWNLOAD_URL ??
   "https://play.google.com/store/apps/details?id=com.holdmint";
 export const CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "holdmintapp@gmail.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "everyspendapp@gmail.com";
 export const CONTACT_FORM_ENDPOINT =
   process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT ??
   `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;

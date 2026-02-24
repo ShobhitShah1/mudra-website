@@ -40,7 +40,7 @@ export default function OpenGraphImage() {
             alignSelf: "flex-start",
           }}
         >
-          HoldMint
+          EverySpend
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>

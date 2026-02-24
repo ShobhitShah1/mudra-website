@@ -14,7 +14,7 @@ const steps = [
   {
     icon: <Zap className="w-6 h-6" />,
     title: "2. Instant Parse",
-    desc: "HoldMint's local engine wakes up, extracts the amount and merchant in <10ms.",
+    desc: "EverySpend's local engine wakes up, extracts the amount and merchant in <10ms.",
     color: "var(--accent)",
   },
   {
@@ -40,7 +40,7 @@ export function Showcase() {
           }
           title="Magic in your message inbox."
           subtitle="No manual entry needed."
-          description="No manual entry. No bank login required. HoldMint listens to your SMS notifications and does the heavy lifting instantly."
+          description="No manual entry. No bank login required. EverySpend listens to your SMS notifications and does the heavy lifting instantly."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full relative">

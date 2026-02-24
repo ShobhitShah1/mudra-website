@@ -27,8 +27,8 @@ Create `.env.local` (already added in this workspace) and configure:
 ```env
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_APP_DOWNLOAD_URL=https://play.google.com/store/apps/details?id=com.holdmint
-NEXT_PUBLIC_CONTACT_EMAIL=holdmintapp@gmail.com
-NEXT_PUBLIC_CONTACT_FORM_ENDPOINT=https://formsubmit.co/ajax/holdmintapp@gmail.com
+NEXT_PUBLIC_CONTACT_EMAIL=everyspendapp@gmail.com
+NEXT_PUBLIC_CONTACT_FORM_ENDPOINT=https://formsubmit.co/ajax/everyspendapp@gmail.com
 ```
 
 Where these are used:

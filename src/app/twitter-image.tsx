@@ -27,7 +27,7 @@ export default function TwitterImage() {
           fontFamily: "Poppins, Arial, sans-serif",
         }}
       >
-        <div style={{ fontSize: 24, color: "#D6D3D1" }}>HoldMint</div>
+        <div style={{ fontSize: 24, color: "#D6D3D1" }}>EverySpend</div>
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           <div
             style={{

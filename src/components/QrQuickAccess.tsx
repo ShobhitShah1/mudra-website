@@ -11,7 +11,7 @@ const AUTO_CLOSE_MS = 5000;
 const SURPRISE_NOTES = [
   {
     title: "Quick access unlocked",
-    description: "Scan this to open HoldMint download page quickly.",
+    description: "Scan this to open EverySpend download page quickly.",
   },
   {
     title: "Pocket shortcut",
@@ -71,7 +71,7 @@ export function QrQuickAccess() {
               <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-white p-2">
                 <Image
                   src={qrSrc}
-                  alt="QR code to open HoldMint download page"
+                  alt="QR code to open EverySpend download page"
                   fill
                   sizes="220px"
                   className="object-contain"

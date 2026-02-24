@@ -39,7 +39,7 @@ export function SplashIntro({ children }: { children: ReactNode }) {
             >
               <Image
                 src="/icons/splash-logo.png"
-                alt="HoldMint logo"
+                alt="EverySpend logo"
                 width={180}
                 height={180}
                 priority

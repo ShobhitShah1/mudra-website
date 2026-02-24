@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -18,7 +18,7 @@ const STEPS: OnboardingStep[] = [
     key: "welcome",
     title: "Welcome",
     subtitle: "Set expectations",
-    detail: "HoldMint explains privacy-first tracking before any sync starts.",
+    detail: "EverySpend explains privacy-first tracking before any sync starts.",
     icon: Hand,
   },
   {
@@ -39,7 +39,7 @@ const STEPS: OnboardingStep[] = [
     key: "sync",
     title: "Sync SMS",
     subtitle: "Scan and review",
-    detail: "HoldMint scans SMS on-device and lets you confirm each transaction.",
+    detail: "EverySpend scans SMS on-device and lets you confirm each transaction.",
     icon: ScanText,
   },
   {

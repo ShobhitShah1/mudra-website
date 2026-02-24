@@ -1,6 +1,6 @@
 {
-  "appName": "HoldMint",
+  "appName": "EverySpend",
   "appDescription": "A premium and highly secure expense tracking app that reads transaction messages directly on your device. Your data stays completely private without using any cloud servers.",
-  "siteUrl": "https://holdmint.app",
-  "longDescription": "HoldMint is a secure and intelligent expense tracker designed to help you manage your money easily. It works by safely reading your transaction messages right on your phone without ever sending your data to any cloud servers. This means your financial information stays completely private and secure. The app categorizes your spending automatically so you can see exactly where your money goes. With a clean and premium design HoldMint makes it simple to track your budget save money and gain full control over your finances. Experience a smarter way to track expenses while keeping your data strictly in your hands."
+  "siteUrl": "https://everyspend.app",
+  "longDescription": "EverySpend is a secure and intelligent expense tracker designed to help you manage your money easily. It works by safely reading your transaction messages right on your phone without ever sending your data to any cloud servers. This means your financial information stays completely private and secure. The app categorizes your spending automatically so you can see exactly where your money goes. With a clean and premium design EverySpend makes it simple to track your budget save money and gain full control over your finances. Experience a smarter way to track expenses while keeping your data strictly in your hands."
 }

@@ -6,8 +6,8 @@ import { Footer } from "@/components/Footer";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact | HoldMint",
-  description: "Contact HoldMint support and send your message quickly.",
+  title: "Contact | EverySpend",
+  description: "Contact EverySpend support and send your message quickly.",
 };
 
 export default function ContactPage() {
@@ -31,7 +31,7 @@ export default function ContactPage() {
           <header className="mt-8 rounded-[2rem] border border-[var(--border)] bg-[var(--bg-surface)]/55 p-7 backdrop-blur-xl sm:p-10">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-main)]/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--text-secondary)]">
               <MessageSquareText className="h-3.5 w-3.5 text-[var(--primary)]" />
-              Contact HoldMint
+              Contact EverySpend
             </div>
 
             <h1 className="max-w-5xl text-4xl font-bold tracking-tight text-[var(--text-primary)] md:text-6xl">

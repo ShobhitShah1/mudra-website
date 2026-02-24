@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -66,7 +66,7 @@ const BASE_TRANSACTIONS: MockTransaction[] = [
 ];
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-const SYNC_SIM_STORAGE_KEY = "holdmint_sms_sync_sim_state";
+const SYNC_SIM_STORAGE_KEY = "everyspend_sms_sync_sim_state";
 
 type PersistedSyncState = {
   phase: SyncPhase;

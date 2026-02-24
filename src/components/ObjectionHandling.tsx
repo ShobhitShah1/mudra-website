@@ -8,7 +8,7 @@ const OBJECTIONS = [
   {
     concern: "I do not want to grant SMS access.",
     response:
-      "You can still use HoldMint manually. SMS sync is optional and can be enabled later.",
+      "You can still use EverySpend manually. SMS sync is optional and can be enabled later.",
     icon: ShieldAlert,
   },
   {

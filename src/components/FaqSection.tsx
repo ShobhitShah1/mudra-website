@@ -24,7 +24,7 @@ export function FaqSection() {
           }
           title="Everything you need."
           subtitle="Nothing you do not."
-          description="Straight answers about privacy, permissions, and how HoldMint works."
+          description="Straight answers about privacy, permissions, and how EverySpend works."
         />
 
         <div className="mx-auto max-w-4xl space-y-3">

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
@@ -16,7 +16,7 @@ type Point = {
 
 const PERIODS: Period[] = ["Day", "Week", "Month", "All"];
 const BANKS: Bank[] = ["All", "HDFC", "SBI", "ICICI"];
-const ANALYTICS_FILTER_STORAGE_KEY = "holdmint_analytics_playground_filters";
+const ANALYTICS_FILTER_STORAGE_KEY = "everyspend_analytics_playground_filters";
 
 const ANALYTICS_POINTS: Record<Period, Point[]> = {
   Day: [
